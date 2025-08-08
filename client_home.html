@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel ="stylesheet" href="css/client.css">
+  <title>Car Workshop Appointment</title>
+</head>
+<body>
+  <h2>Book Your Appointment</h2>
+  <form id="appointmentForm" action="submit_appointment.php" method="POST">
+    <label>Name:</label><input type="text" name="name" required><br>
+    <label>Address:</label><input type="text" name="address"><br>
+    <label>Phone:</label><input type="text" name="phone" pattern="\d+" required><br>
+    <label>Car License:</label><input type="text" name="license_no" required><br>
+    <label>Car Engine No:</label><input type="text" name="engine_no" pattern="\d+" required><br>
+    <label>Appointment Date:</label>
+    <input type="date" id="appointmentDate" name="appointment_date" required><br>
+
+    <label>Select Mechanic:</label>
+    <select name="mechanic_id" id="mechanicSelect" required>
+      <option value="">Select date first</option>
+    </select><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+<script>
+document.getElementById("appointmentDate").addEventListener("change", function () {
+    const selectedDate = this.value;
+    const mechanicSelect = document.getElementById("mechanicSelect");
+
+    mechanicSelect.innerHTML = '<option value="">-- Select Mechanic --</option>';
+
+    fetch("get_mechanics.php?date=" + selectedDate)
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => {
+                throw new Error(err.error || 'Server error');
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        mechanicSelect.innerHTML = '<option value="">Select mechanic</option>';
+        data.forEach(mechanic => {
+            const option = document.createElement("option");
+            option.value = mechanic.mechanic_id;
+            option.textContent = `${mechanic.mechanic_name} (${mechanic.free_slots} slots)`;
+            mechanicSelect.appendChild(option);
+        });
+    })
+    .catch(error => {
+        console.error("Fetch error:", error);
+        mechanicSelect.innerHTML = `<option value="">Error: ${error.message}</option>`;
+    });
+});
+</script>
+
+</body>
+</html>

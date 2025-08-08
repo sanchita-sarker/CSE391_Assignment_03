@@ -1,0 +1,126 @@
+/* General resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  background-color: #3c3a3a;
+  color: #050303;
+}
+
+/* Header and Navigation */
+header {
+  background-color: #221f1f;
+  padding: 20px 40px;
+}
+
+.nav_logo h1 a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 28px;
+}
+
+/* Login Section */
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+  padding: 20px;
+}
+
+.login_box {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login_box h1 {
+  margin-bottom: 24px;
+  font-size: 32px;
+  color: #000000;
+}
+
+/* Form */
+.login_form input[type="text"],
+.login_form input[type="password"] {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.login_form input[type="submit"] {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login_form input[type="submit"]:hover {
+  background-color: #71dbff;
+}
+
+/* Links Section */
+.links {
+  margin-top: 20px;
+}
+
+.links p {
+  margin-bottom: 10px;
+}
+
+#SignUpButton {
+  padding: 10px 20px;
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#SignUpButton:hover {
+  background-color: #71c9fb;
+}
+
+#Login {
+  padding: 10px 20px;
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#Login:hover {
+  background-color: #71c9fb;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login_box {
+    padding: 20px;
+  }
+
+  .login_box h1 {
+    font-size: 24px;
+  }
+}
